@@ -1,0 +1,11 @@
+*-bak
+*.bak
+*-cache
+*-cache.lib
+*.net
+gerber
+gerber_to_order
+/production
+/Production
+*-backups
+~*

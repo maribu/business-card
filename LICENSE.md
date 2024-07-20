@@ -6,8 +6,12 @@ are detailed in the following.
 ## Hardware
 
 Everything in the hardware folder is licensed under the [CERN Open Hardware
-Licence Version 2 - Weakly Reciprocal][CERN-OHL-W]. The license text is
-provided in the `licenses` folder in this repository.
+Licence Version 2 - Weakly Reciprocal][CERN-OHL-W], except for external
+footprints and symbols used from the KiCad library (which are licensed under
+the CC-BY-SA 4.0) and the USB edge connector symbol and footprint, which are
+taken from https://github.com/vasya-zh/PCB-Edge-USB-connector-KiCad-library
+and licensed GPL-3.0-only. The license texts are provided in the `licenses`
+folder in this repository.
 
 ## Software
 
