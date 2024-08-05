@@ -1,0 +1,44 @@
+/**
+@defgroup    boards_business_card Marian's Business Card Board
+@ingroup     boards
+@brief       Support for Marian's Business Card
+
+## Overview
+
+This is a business card doubling as a fully programmable board that is
+optimized for low per unit cost: It can be produced for a variable per unit
+variable cost of less than 2 EUR (before tax) plus the constant cost for setup,
+shipping, service, etc. Producing 5 units will cost about 5 EUR per unit, but
+at large quantities the per unit cost will drop to about 2 EUR.
+
+## Hardware
+
+The [KiCAD CAD files][cad-files] are published under an open hardware license,
+with the exception of the silkscreen components that should be customized to
+the owner of the business card.
+
+### MCU
+
+| MCU               | STM32G030F6P6                         |
+|:----------------- |:------------------------------------- |
+| Family            | ARM Cortex-M0+                        |
+| Vendor            | ST Microelectronics                   |
+| RAM               |  8 KiB                                |
+| Flash             | 32 KiB                                |
+| Frequency         | up to 64 MHz                          |
+| FPU               | no                                    |
+| Timers            | 8 (2x watchdog, 1 SysTick, 5x 16-bit) |
+| ADCs              | 1x 12-bit                             |
+| UARTs             | 2                                     |
+| SPIs              | 2                                     |
+| I2Cs              | 2                                     |
+| RTC               | 1                                     |
+| Vcc               | 2.0V - 3.6V                           |
+| Datasheet         | [Datasheet][mcu-datasheet]            |
+| Reference Manual  | [Reference Manual][mcu-manual]        |
+
+[cad-files]: https://github.com/maribu/business-card
+[mcu-datasheet]: https://www.st.com/resource/en/datasheet/stm32g030f6.pdf
+[mcu-manual]: https://www.st.com/resource/en/reference_manual/rm0454-stm32g0x0-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+
+*/
