@@ -1,0 +1,12 @@
+
+# setup programmer
+PROGRAMMER ?= openocd
+OPENOCD_DEBUG_ADAPTER ?= jlink
+PROGRAMMERS_SUPPORTED += openocd
+include $(RIOTMAKE)/tools/openocd.inc.mk
+
+# we use shared STM32 configuration snippets
+INCLUDES += -I$(RIOTBASE)/boards/common/stm32/include
+
+# setup serial terminal
+include $(RIOTMAKE)/tools/serial.inc.mk
