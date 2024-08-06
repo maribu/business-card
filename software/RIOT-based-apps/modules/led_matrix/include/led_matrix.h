@@ -57,12 +57,31 @@
 
 #include <stdint.h>
 
-#include "periph/gpio_ll.h"
-#include "periph/timer.h"
+#include "bitmap_fonts.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/**
+ * @brief   The number of bits used to encode a pixel in the LED matrix
+ */
+#define LED_MATRIX_BRIGHTNESS_BITS      4U
+
+/**
+ * @brief   The number different brightness levels supported
+ *
+ * The human eye perceives brightness in a non-linear fashion, but this
+ * implementation will increase the time a given pixel is active per
+ * frame linearly with the brightness given.
+ */
+#define LED_MATRIX_BRIGHTNESS_LEVELS    (1U << LED_MATRIX_BRIGHTNESS_BITS)
+
+/**
+ * @brief   The highest brightness value supported
+ */
+#define LED_MATRIX_BRIGHTNESS_MAX       (LED_MATRIX_BRIGHTNESS_LEVELS - 1U)
+
 
 /**
  * @brief   Set the brightness of the given LED matrix in the scratch
@@ -93,13 +112,24 @@ void led_matrix_fb_set(int x, int y, uint8_t brightness);
 void led_matrix_fb_clear(void);
 
 /**
- * @brief   Switch the active buffer with the scratch buffer
+ * @brief   Switch the active buffer with the scratch buffer at
+ *          just before drawing the given frame number
  *
- * This will result in the scratch buffer becoming active and rendered, and the
- * previously shown buffer becoming the new scratch buffer. The switch is
- * thread safe.
+ * @param[in]   at_frame_number     The number of the frame to switch at
+ *
+ * This function will block the caller until the frame buffer has been
+ * switched. The switch is done in the drawing ISR right between
+ * `at_frame_number - 1` and `at_frame_number`, if that point in
+ * time is still in the future. Otherwise the framebuffer is switched
+ * at the next frame
+ *
+ * @return  The frame that the frame buffer was switched at
+ *
+ * @warning This function is not thread-safe. The caller must ensure
+ *          that no other thread is concurrently accessing the
+ *          LED matrix's frame buffers.
  */
-void led_matrix_fb_switch(void);
+uint32_t led_matrix_fb_switch(uint32_t at_frame_number);
 
 /**
  * @brief   Prepares the LED matrix and configures and enabled the
@@ -139,10 +169,25 @@ void led_matrix_wait_for_frame(uint32_t frame_number);
 uint32_t led_matrix_frame_number(void);
 
 /**
- * @brief   Scroll the given text through the LED matrix
+ * @brief   Render the given glyph into the scratch frame buffer
+ * @param[in]   glyph   The glyph to place
+ * @param[in]   x       X coordinate to place the topmost corner of the glyph
+ * @param[in]   y       Y coordinate to place the leftmost corner of the glyph
+ * @param[in]   brightness  The brightness of the glyph
+ */
+void led_matrix_glyph(const bitmap_glyph_t *glyph, int x, int y, uint8_t brightness);
+
+/**
+ * @brief   Render the given text into the frame buffer
  *
- * @param   text        The text to render
- * @param   brightness  The brightness of the text
+ * @param[in]   font        The bitmap font to use
+ * @param[in]   text        The text to render
+ * @param[in]   len         Length of @p text in bytes
+ * @param[in]   xoffset     Move the text right (positive `xoffset`) or left
+ *                          (negative `xoffset`) (in pixels)
+ * @param[in]   yoffset     Move the text down (positive `yoffset`) or up
+ *                          (negative `yoffset`) (in pixels)
+ * @param[in]   brightness  The brightness of the text
  *
  * Control is returned to the calling thread once the last letter of the
  * message has scrolled out of the screen.
@@ -151,7 +196,27 @@ uint32_t led_matrix_frame_number(void);
  *          that no other thread is concurrently accessing the
  *          LED matrix's frame buffers.
  */
-void led_matrix_print(const char *text, size_t len, uint8_t brightness);
+void led_matrix_text(const bitmap_font_t *font, const char *text, size_t len,
+                     int xoffset, int yoffset, uint8_t brightness);
+
+/**
+ * @brief   Show an animation that scrolles the given text rendered with the
+ *          given font through the LED matrix
+ *
+ * @param[in]   font        The bitmap font to use
+ * @param[in]   text        The text to render
+ * @param[in]   len         Length of @p text in bytes
+ * @param[in]   brightness  The brightness of the text
+ *
+ * @warning This function is not thread-safe. The caller must ensure
+ *          that no other thread is concurrently accessing the
+ *          LED matrix's frame buffers.
+ *
+ * This function returns once the full text has scrolled through the
+ * LED matrix and the screen is blank again.
+ */
+void led_matrix_text_scroll(const bitmap_font_t *font, const char *text, size_t len,
+                            uint8_t brightness);
 #ifdef __cplusplus
 }
 #endif

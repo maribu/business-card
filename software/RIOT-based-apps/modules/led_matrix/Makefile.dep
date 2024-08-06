@@ -3,4 +3,4 @@ FEATURES_REQUIRED += periph_gpio_ll_switch_dir
 FEATURES_REQUIRED += periph_timer
 FEATURES_REQUIRED += periph_timer_periodic
 
-USEMODULE += mineplex
+USEMODULE += bitmap_fonts
