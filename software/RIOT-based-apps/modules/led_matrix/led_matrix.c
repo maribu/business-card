@@ -1,19 +1,15 @@
 #include "atomic_utils.h"
+#include "bitmap_fonts.h"
 #include "clk.h"
 #include "irq.h"
 #include "led_matrix.h"
 #include "led_matrix_params.h"
-#include "mineplex.h"
 #include "periph/gpio_ll.h"
 #include "periph/timer.h"
 
 #include <string.h>
 
-#define LED_MATRIX_BRIGHTNESS_BITS      2U
-#define LED_MATRIX_BRIGHTNESS_LEVELS    (1U << LED_MATRIX_BRIGHTNESS_BITS)
-#define LED_MATRIX_BRIGHTNESS_MAX       (LED_MATRIX_BRIGHTNESS_LEVELS - 1U)
-
-#define LED_MATRIX_PRINT_FRAMES         5
+#define LED_MATRIX_TEXT_SCROLL_FRAMES   4
 
 static uword_t led_out_masks[LED_MATRIX_PIN_NUMOF];
 static uword_t led_dir_masks[LED_MATRIX_PIN_NUMOF];
@@ -23,10 +19,12 @@ static uword_t led_dir_mask_all;
 static uint8_t fb1[(LED_MATRIX_LED_NUMOF * LED_MATRIX_BRIGHTNESS_BITS + 7) / 8];
 static uint8_t fb2[(LED_MATRIX_LED_NUMOF * LED_MATRIX_BRIGHTNESS_BITS + 7) / 8];
 
-static uint8_t *fb_showing = fb1;
-static uint8_t *fb_preparing = fb2;
+static uint8_t *fb_active = fb1;
+static uint8_t *fb_scratch = fb2;
 
 static uint32_t frames;
+static uint32_t frame_switch_target;
+static uint8_t frame_switch_request;
 
 void led_matrix_fb_set(int x, int y, uint8_t brightness)
 {
@@ -36,22 +34,34 @@ void led_matrix_fb_set(int x, int y, uint8_t brightness)
 
     size_t pos = ((size_t)x * LED_MATRIX_HEIGHT + (size_t)y) * LED_MATRIX_BRIGHTNESS_BITS;
     brightness &= LED_MATRIX_BRIGHTNESS_MAX;
-    fb_preparing[pos >> 3] &= ~(LED_MATRIX_BRIGHTNESS_MAX << (pos & 0x7));
-    fb_preparing[pos >> 3] |= brightness << (pos & 0x7);
+    fb_scratch[pos >> 3] &= ~(LED_MATRIX_BRIGHTNESS_MAX << (pos & 0x7));
+    fb_scratch[pos >> 3] |= brightness << (pos & 0x7);
 }
 
 void led_matrix_fb_clear(void)
 {
-    memset(fb_preparing, 0, sizeof(fb1));
+    memset(fb_scratch, 0, sizeof(fb1));
 }
 
-void led_matrix_fb_switch(void)
+uint32_t led_matrix_fb_switch(uint32_t at_frame_number)
 {
     unsigned irq_state = irq_disable();
-    uint8_t *tmp = fb_showing;
-    fb_showing = fb_preparing;
-    fb_preparing = tmp;
+    frame_switch_target = at_frame_number;
+    frame_switch_request = 1;
     irq_restore(irq_state);
+
+    while (atomic_load_u8(&frame_switch_request)) {
+        /* busy wait */
+    }
+
+    /* The atomic_load_u32() will not provide thread-safety here,
+     * as concurrent calls could already have changed the value.
+     * But the doc says that only a single thread can do rendering.
+     *
+     * It more about telling the compiler to not optimized out the
+     * load, as the ISR may have updated this if we are already
+     * past this frame */
+    return atomic_load_u32(&frame_switch_target);
 }
 
 static void led_timer_cb(void *arg, int chan)
@@ -67,7 +77,7 @@ static void led_timer_cb(void *arg, int chan)
 
     size_t pos = (x * LED_MATRIX_HEIGHT + y) * LED_MATRIX_BRIGHTNESS_BITS;
 
-    if (((fb_showing[pos >> 3] >> (pos & 0x7)) & LED_MATRIX_BRIGHTNESS_MAX) >= b) {
+    if (((fb_active[pos >> 3] >> (pos & 0x7)) & LED_MATRIX_BRIGHTNESS_MAX) >= b) {
         unsigned px = LED_MATRIX_WIDTH - 1 - x;
         unsigned py = (y >= px) ? y + 1 : y;
         gpio_ll_switch_dir_output(LED_MATRIX_PORT, led_dir_masks[px]);
@@ -82,6 +92,14 @@ static void led_timer_cb(void *arg, int chan)
             if (++b == LED_MATRIX_BRIGHTNESS_LEVELS) {
                 frames++;
                 b = 1;
+
+                if (frame_switch_request && (frame_switch_target - frames > UINT16_MAX)) {
+                    uint8_t *tmp = fb_active;
+                    fb_active = fb_scratch;
+                    fb_scratch = tmp;
+                    frame_switch_target = frames;
+                    frame_switch_request = 0;
+                }
             }
         }
     }
@@ -134,48 +152,66 @@ uint32_t led_matrix_frame_number(void)
     return atomic_load_u32(&frames);
 }
 
-void led_matrix_print(const char *text, size_t text_len, uint8_t brightness)
+void led_matrix_glyph(const bitmap_glyph_t *glyph, int xoffset, int yoffset, uint8_t brightness)
 {
-    int xshift = LED_MATRIX_WIDTH - 1;
+    assert(glyph != NULL);
 
-    uint32_t target = led_matrix_frame_number();
+    if (xoffset + glyph->width < 0) {
+        return;
+    }
 
-    while (1) {
+    if (xoffset >= (int)LED_MATRIX_WIDTH) {
+        return;
+    }
+
+    for (int x = 0; x < glyph->width; x++) {
+        for (int y = 0; y < 8; y++) {
+            if (bitmap_glyph_at(glyph, x, y)) {
+                led_matrix_fb_set(x + xoffset, y + yoffset, brightness);
+            }
+        }
+    }
+
+}
+
+void led_matrix_text(const bitmap_font_t *font, const char *text, size_t len,
+                     int xoffset, int yoffset, uint8_t brightness)
+{
+    assert((font != NULL) && (text != NULL));
+
+    if (len == 0) {
+        return;
+    }
+
+    bitmap_glyph_t left = bitmap_font_get(font, text[0]);
+
+    led_matrix_glyph(&left, xoffset, yoffset, brightness);
+
+    for (int i = 1; i < (int)len; i++) {
+        bitmap_glyph_t right = bitmap_font_get(font, text[i]);
+        xoffset += left.width;
+        xoffset += bitmap_glyph_space_between(&left, &right);
+
+        led_matrix_glyph(&right, xoffset, yoffset, brightness);
+
+        left = right;
+    }
+}
+
+void led_matrix_text_scroll(const bitmap_font_t *font, const char *text, size_t len,
+                            uint8_t brightness)
+{
+    int xshift;
+    int xshift_end = -(int)bitmap_font_render_width(font, text, len) - 1;
+    int yshift = (LED_MATRIX_HEIGHT - 8 + 1) / 2;
+
+    uint32_t frame_target = led_matrix_frame_number();
+
+    led_matrix_fb_clear();
+
+    for (xshift = LED_MATRIX_WIDTH - 1; xshift > xshift_end; xshift--) {
+        led_matrix_text(font, text, len, xshift, yshift, brightness);
+        frame_target = led_matrix_fb_switch(frame_target) + LED_MATRIX_TEXT_SCROLL_FRAMES;
         led_matrix_fb_clear();
-        int yshift = 0;
-        if (LED_MATRIX_HEIGHT >= 9) {
-            for (unsigned x = 0; x < LED_MATRIX_WIDTH; x++) {
-                led_matrix_fb_set(x, 0, 1);
-                led_matrix_fb_set(x, 8, 1);
-            }
-            yshift = 2;
-        }
-
-        int xoffset = LED_MATRIX_WIDTH - xshift;
-        for (int i = 0; i < (int)text_len; i++) {
-            const uint8_t *font = mineplex_char(text[i]);
-            int xmax = 0;
-            for (int x = 0; x < 5; x++) {
-                for (int y = 0; y < 5; y++) {
-                    if (font[y] & (1U << x)) {
-                        if (x > xmax) {
-                            xmax = x;
-                        }
-                        led_matrix_fb_set(x + xoffset, y + yshift, brightness);
-                    }
-                }
-            }
-
-            xoffset += xmax + 2;
-        }
-
-        xshift++;
-        if (xoffset <= -5) {
-            return;
-        }
-
-        target += LED_MATRIX_PRINT_FRAMES;
-        led_matrix_wait_for_frame(target);
-        led_matrix_fb_switch();
     }
 }
