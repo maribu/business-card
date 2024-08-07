@@ -3437,7 +3437,7 @@
 		)
 		(uuid "29d4d6fb-5b02-4f59-83fb-fe00622036ab")
 	)
-	(label "BM1"
+	(label "BM3"
 		(at 29.21 44.45 180)
 		(fields_autoplaced yes)
 		(effects
@@ -3657,7 +3657,7 @@
 		)
 		(uuid "bc3b7559-33ab-4295-a2cc-2620716bb82e")
 	)
-	(label "BM3"
+	(label "BM1"
 		(at 97.79 99.06 180)
 		(fields_autoplaced yes)
 		(effects
@@ -3745,7 +3745,7 @@
 		)
 		(uuid "f20df232-4b45-4ded-9e12-2b99fcd4475a")
 	)
-	(label "BM1"
+	(label "BM3"
 		(at 97.79 121.92 180)
 		(fields_autoplaced yes)
 		(effects
@@ -3756,7 +3756,7 @@
 		)
 		(uuid "f552b67a-bd94-4411-9a45-cb5187278e35")
 	)
-	(label "BM3"
+	(label "BM1"
 		(at 29.21 49.53 180)
 		(fields_autoplaced yes)
 		(effects
