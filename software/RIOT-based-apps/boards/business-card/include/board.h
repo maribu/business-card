@@ -52,9 +52,9 @@ extern "C" {
  */
 #define BUTTON_MATRIX_PORT      GPIO_PORT_B     /**< The GPIO port the button matrix connected to */
 
-#define BUTTON_MATRIX_PIN_0     0               /**< GPIO pin number of button matrix pin 0 */
+#define BUTTON_MATRIX_PIN_0     7               /**< GPIO pin number of button matrix pin 0 */
 #define BUTTON_MATRIX_PIN_1     3               /**< GPIO pin number of button matrix pin 1 */
-#define BUTTON_MATRIX_PIN_2     7               /**< GPIO pin number of button matrix pin 2 */
+#define BUTTON_MATRIX_PIN_2     0               /**< GPIO pin number of button matrix pin 2 */
 /** @} */
 
 #ifdef __cplusplus
