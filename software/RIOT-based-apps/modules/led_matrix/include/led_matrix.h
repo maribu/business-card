@@ -21,6 +21,15 @@
  *
  * While the schematic above using 10 GPIOs to drive 90 LEDs, the code is
  * written to work with up to 16 GPIO pins (or to drive up to 240 LEDs).
+ *
+ * The LEDs are referred to by `x` and `y` coordinates in this module, with
+ * `(0, 0)` being the topmost-leftmost LED. Incrementing `x` by one will go one
+ * LED to the right, incrementing `y` by one will go one LED down. E.g. `(0,
+ * 0)` would refer to D7 in the schematic, `(2, 1)` to D26, and `(7, 2)` to
+ * D72. Or in other words: The diagonal gap in the schematic is silently
+ * stepped over and the coordinates match exactly the physical layout on the
+ * PCB, which has no diagonal gap.
+ *
  * The board configuration needs to provide the following macros:
  *
  * ```C
