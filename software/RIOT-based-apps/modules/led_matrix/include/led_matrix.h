@@ -209,7 +209,7 @@ void led_matrix_text(const bitmap_font_t *font, const char *text, size_t len,
                      int xoffset, int yoffset, uint8_t brightness);
 
 /**
- * @brief   Show an animation that scrolles the given text rendered with the
+ * @brief   Show an animation that scrolls the given text rendered with the
  *          given font through the LED matrix
  *
  * @param[in]   font        The bitmap font to use
@@ -226,6 +226,30 @@ void led_matrix_text(const bitmap_font_t *font, const char *text, size_t len,
  */
 void led_matrix_text_scroll(const bitmap_font_t *font, const char *text, size_t len,
                             uint8_t brightness);
+
+/**
+ * @brief   Similar to @ref led_matrix_text_scroll but loops through the
+ *          text until at least one of the given set of buttons is pressed
+ *
+ * @param[in]   font        The bitmap font to use
+ * @param[in]   text        The text to render
+ * @param[in]   len         Length of @p text in bytes
+ * @param[in]   btn_filter  Bitmask specifying the buttons used to exit the message
+ * @param[out]  btn_target  Bitmask of the buttons actually pressed
+ * @param[in]   btn_len     Size of @p btn_filter and @p btn_target
+ * @param[in]   brightness  The brightness of the text
+ *
+ * @pre     @p btn_len equals `(BUTTON_MATRIX_BUTTON_NUMOF + 7) / 8)` (or is exactly
+ *          the size needed to hold all buttons present in the board)
+ *
+ * @warning This function is only provided if module `button_matrix` is also used.
+ */
+void led_matrix_text_scroll_until_button(const bitmap_font_t *font,
+                                         const char *text, size_t len,
+                                         const uint8_t *btn_filter,
+                                         uint8_t *btn_target,
+                                         size_t btn_len,
+                                         uint8_t brightness);
 #ifdef __cplusplus
 }
 #endif

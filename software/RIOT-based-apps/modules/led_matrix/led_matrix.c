@@ -1,6 +1,7 @@
 #include "atomic_utils.h"
 #include "bitmap_fonts.h"
 #include "clk.h"
+#include "compiler_hints.h"
 #include "irq.h"
 #include "led_matrix.h"
 #include "led_matrix_params.h"
@@ -8,6 +9,12 @@
 #include "periph/timer.h"
 
 #include <string.h>
+
+#if MODULE_BUTTON_MATRIX
+#include "button_matrix.h"
+#include "button_matrix_params.h"
+#endif /* MODULE_BUTTON_MATRIX */
+
 
 #define LED_MATRIX_TEXT_SCROLL_FRAMES   4
 
@@ -215,3 +222,37 @@ void led_matrix_text_scroll(const bitmap_font_t *font, const char *text, size_t 
         led_matrix_fb_clear();
     }
 }
+
+#if MODULE_BUTTON_MATRIX
+void led_matrix_text_scroll_until_button(const bitmap_font_t *font,
+                                         const char *text, size_t len,
+                                         const uint8_t *btn_filter,
+                                         uint8_t *btn_target,
+                                         size_t btn_len,
+                                         uint8_t brightness)
+{
+    assume((btn_filter != NULL) && (btn_target != NULL));
+    assume(btn_len == (BUTTON_MATRIX_BUTTON_NUMOF + 7) / 8);
+    int xshift;
+    int xshift_end = -(int)bitmap_font_render_width(font, text, len) - 1;
+
+    uint32_t frame_target = led_matrix_frame_number();
+
+    led_matrix_fb_clear();
+
+    while (1) {
+        int yshift = (LED_MATRIX_HEIGHT - 8 + 1) / 2;
+        for (xshift = LED_MATRIX_WIDTH - 1; xshift > xshift_end; xshift--) {
+            led_matrix_text(font, text, len, xshift, yshift, brightness);
+            frame_target = led_matrix_fb_switch(frame_target) + LED_MATRIX_TEXT_SCROLL_FRAMES;
+            button_matrix_scan(btn_target);
+            for (size_t i = 0; i < btn_len; i++) {
+                if (btn_filter[i] & btn_target[i]) {
+                    return;
+                }
+            }
+            led_matrix_fb_clear();
+        }
+    }
+}
+#endif /* MODULE_BUTTON_MATRIX */
