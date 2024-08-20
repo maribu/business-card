@@ -14,9 +14,9 @@ if __name__ == '__main__':
 
     # trimming off empty space from the space glyph won't work, so we add that
     # by hand
-    fontdata = [0x00, 0x00]
+    fontdata = [0x00, 0x00, 0x00]
     offsets = [0]
-    offset = 2
+    offset = len(fontdata)
     for codepoint in range(0x21, 0x7e):
         bitmap = font.glyph(chr(codepoint)).draw().todata()
         data = []
