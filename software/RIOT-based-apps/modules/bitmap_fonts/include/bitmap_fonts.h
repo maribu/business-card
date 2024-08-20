@@ -57,6 +57,20 @@ typedef struct {
 } bitmap_glyph_t;
 
 /**
+ * @name    Extra glyphs for emojis, icons, etc.
+ * @{
+ */
+extern const bitmap_glyph_t bitmap_glyph_arrow_up;      /**< An arrow facing upwards */
+extern const bitmap_glyph_t bitmap_glyph_arrow_down;    /**< An arrow facing downwards */
+extern const bitmap_glyph_t bitmap_glyph_arrow_left;    /**< An arrow facing left */
+extern const bitmap_glyph_t bitmap_glyph_arrow_right;   /**< An arrow facing right */
+extern const bitmap_glyph_t bitmap_glyph_heart;         /**< A heart emoji */
+extern const bitmap_glyph_t bitmap_glyph_thumb_up;      /**< A thump up emoji */
+extern const bitmap_glyph_t bitmap_glyph_thumb_down;    /**< A thump down emoji */
+
+/** @} */
+
+/**
  * @brief   The MatrixLight8 bitmap font from https://github.com/trip5/Matrix-Fonts
  */
 extern const bitmap_font_t bitmap_font_matrix_light8;

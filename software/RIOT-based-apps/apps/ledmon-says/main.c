@@ -7,41 +7,17 @@
 #include "led_matrix.h"
 #include "led_matrix_params.h"
 
-#define GLYPH_FRAMES    60
-#define BLANK_FRAMES    30
-#define BLINK_FRAMES    5
-#define BLINK_LOOPS     6
+#define GLYPH_FRAMES        60
+#define GLYPH_MIN_FRAMES    10
+#define BLANK_FRAMES        30
+#define BLINK_FRAMES        5
+#define BLINK_LOOPS         6
 
-static const uint8_t _arrow_up[] = {
-    0x08, 0x04, 0x02, 0xff, 0x02, 0x04, 0x08
-};
-static const uint8_t _arrow_down[] = {
-    0x10, 0x20, 0x40, 0xff, 0x40, 0x20, 0x10
-};
-static const uint8_t _arrow_left[] = {
-    0x08, 0x1c, 0x2a, 0x49, 0x08, 0x08, 0x08, 0x08
-};
-static const uint8_t _arrow_right[] = {
-    0x08, 0x08, 0x08, 0x08, 0x49, 0x2a, 0x1c, 0x08
-};
-
-static const bitmap_glyph_t arrows[] = {
-    {
-        .data = _arrow_up,
-        .width = ARRAY_SIZE(_arrow_up),
-    },
-    {
-        .data = _arrow_down,
-        .width = ARRAY_SIZE(_arrow_down),
-    },
-    {
-        .data = _arrow_left,
-        .width = ARRAY_SIZE(_arrow_left),
-    },
-    {
-        .data = _arrow_right,
-        .width = ARRAY_SIZE(_arrow_right),
-    },
+static const bitmap_glyph_t * const arrows[] = {
+    &bitmap_glyph_arrow_up,
+    &bitmap_glyph_arrow_down,
+    &bitmap_glyph_arrow_left,
+    &bitmap_glyph_arrow_right,
 };
 
 static uint32_t xorshift32(uint32_t x)
@@ -66,7 +42,7 @@ static bitmap_glyph_t simon_next_glyph(uint32_t *rnd_state)
     } while (idx >= 6);
 
     if (idx < 4) {
-        return arrows[idx];
+        return *arrows[idx];
     }
 
     if (idx == 4) {
@@ -105,13 +81,13 @@ static bitmap_glyph_t glyph_by_key(uint8_t key)
 {
     switch (key) {
     case BUTTON_UP:
-        return arrows[0];
+        return *arrows[0];
     case BUTTON_DOWN:
-        return arrows[1];
+        return *arrows[1];
     case BUTTON_LEFT:
-        return arrows[2];
+        return *arrows[2];
     case BUTTON_RIGHT:
-        return arrows[3];
+        return *arrows[3];
     case BUTTON_A:
         return bitmap_font_get(&bitmap_font_matrix_light8, 'A');
     case BUTTON_B:
@@ -184,6 +160,11 @@ game_restart:
                                          1);
                         target_frame = led_matrix_fb_switch(target_frame) + BLINK_FRAMES;
                     }
+                    led_matrix_fb_clear();
+                    led_matrix_glyph(&bitmap_glyph_thumb_down,
+                                     (LED_MATRIX_WIDTH - bitmap_glyph_thumb_down.width) / 2, (LED_MATRIX_HEIGHT - 8) / 2,
+                                     LED_MATRIX_BRIGHTNESS_MAX);
+                    target_frame = led_matrix_fb_switch(target_frame) + GLYPH_FRAMES;
                     led_matrix_wait_for_frame(target_frame);
 
                     static const char *msg_you_lost = "You lost";
@@ -199,10 +180,29 @@ game_restart:
                                  (LED_MATRIX_WIDTH - glyph.width) / 2, (LED_MATRIX_HEIGHT - 8) / 2,
                                  LED_MATRIX_BRIGHTNESS_MAX);
 
-                target_frame = led_matrix_fb_switch(target_frame) + GLYPH_FRAMES;
+                target_frame = led_matrix_fb_switch(target_frame);
+                for (unsigned i = 0; i < GLYPH_FRAMES; i++) {
+                    target_frame++;
+                    led_matrix_wait_for_frame(target_frame);
+                    button_matrix_scan(btns_pressed);
+                    if (btns_pressed[0] == 0) {
+                        if (i < GLYPH_MIN_FRAMES) {
+                            target_frame += GLYPH_MIN_FRAMES - i;
+                        }
+                        break;
+                    }
+                }
                 led_matrix_fb_clear();
-                target_frame = led_matrix_fb_switch(target_frame) + BLANK_FRAMES;
+                target_frame = led_matrix_fb_switch(target_frame);
             }
+            target_frame += BLANK_FRAMES;
+            led_matrix_fb_clear();
+            led_matrix_glyph(&bitmap_glyph_thumb_up,
+                             (LED_MATRIX_WIDTH - bitmap_glyph_thumb_up.width) / 2, (LED_MATRIX_HEIGHT - 8) / 2,
+                             LED_MATRIX_BRIGHTNESS_MAX);
+            target_frame = led_matrix_fb_switch(target_frame) + GLYPH_FRAMES;
+            led_matrix_fb_clear();
+            target_frame = led_matrix_fb_switch(target_frame) + BLANK_FRAMES;
         }
     }
 
