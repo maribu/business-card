@@ -73,6 +73,13 @@ extern "C" {
 #define BUTTON_B        0x20    /**< Bitmask to check for the "B" button */
 
 /**
+ * @brief   Bitmask with bits for each and every button available on this board set
+ */
+static const uint8_t board_btns_all[] = {
+    BUTTON_A | BUTTON_B | BUTTON_UP | BUTTON_DOWN | BUTTON_LEFT | BUTTON_RIGHT
+};
+
+/**
  * @brief   Heuristic to filter out fake inputs due to rollover
  *
  * The currently implemented heuristic assumes that at most two buttons are

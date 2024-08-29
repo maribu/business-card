@@ -1,4 +1,4 @@
-APPLICATION := button-demo-rollover
+APPLICATION := flappy-led
 BOARD := business-card
 RIOTBASE ?= $(CURDIR)/../../RIOT
 
@@ -8,9 +8,9 @@ EXTERNAL_MODULE_DIRS := $(CURDIR)/../../modules
 DEVELHELP ?= 1
 QUIET ?= 1
 
-USEMODULE += button_matrix
-USEMODULE += fmt
+USEMODULE += bitmap_fonts
 USEMODULE += led_matrix
+USEMODULE += led_matrix_games
 USEMODULE += stdio_null
 
 include $(RIOTBASE)/Makefile.include
