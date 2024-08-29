@@ -9,8 +9,8 @@ DEVELHELP ?= 1
 QUIET ?= 1
 
 USEMODULE += button_matrix
-USEMODULE += fmt
 USEMODULE += led_matrix
+USEMODULE += led_matrix_games
 USEMODULE += stdio_null
 
 include $(RIOTBASE)/Makefile.include

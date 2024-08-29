@@ -28,10 +28,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "bitmap_fonts.h"
-#include "led_matrix.h"
-#include "led_matrix_params.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -105,6 +101,16 @@ static inline uint32_t xorshift32(uint32_t x)
  *          crashed into an obstacle and the score was shown.
  */
 void led_matrix_games_flappy_led(void);
+
+/**
+ * @brief   Run the "LEDmon says" game until one game is over
+ *
+ * @pre     @ref led_matrix_init and @ref button_matrix_init has been called
+ *
+ * @details Call this in a loop to restart the game after the player
+ *          failed to repeat the button sequence shown correctly.
+ */
+void led_matrix_games_ledmon_says(void);
 
 #ifdef __cplusplus
 }
