@@ -9,3 +9,5 @@ gerber_to_order
 /Production
 *-backups
 ~*
+/output
+/panel.*

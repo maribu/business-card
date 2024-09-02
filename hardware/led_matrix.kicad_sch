@@ -5395,7 +5395,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 17.78 0)
 			(effects
 				(font
@@ -5472,7 +5472,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 109.22 0)
 			(effects
 				(font
@@ -5549,7 +5549,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 88.9 0)
 			(effects
 				(font
@@ -5626,7 +5626,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 38.1 0)
 			(effects
 				(font
@@ -5702,7 +5702,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 71.12 90)
 			(effects
 				(font
@@ -5779,7 +5779,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 68.58 0)
 			(effects
 				(font
@@ -5856,7 +5856,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 68.58 0)
 			(effects
 				(font
@@ -5933,7 +5933,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 99.06 0)
 			(effects
 				(font
@@ -6010,7 +6010,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 99.06 0)
 			(effects
 				(font
@@ -6086,7 +6086,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 101.6 90)
 			(effects
 				(font
@@ -6163,7 +6163,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 27.94 0)
 			(effects
 				(font
@@ -6240,7 +6240,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 109.22 0)
 			(effects
 				(font
@@ -6317,7 +6317,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 17.78 0)
 			(effects
 				(font
@@ -6393,7 +6393,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 111.76 90)
 			(effects
 				(font
@@ -6470,7 +6470,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 27.94 0)
 			(effects
 				(font
@@ -6547,7 +6547,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 38.1 0)
 			(effects
 				(font
@@ -6624,7 +6624,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 109.22 0)
 			(effects
 				(font
@@ -6701,7 +6701,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 48.26 0)
 			(effects
 				(font
@@ -6778,7 +6778,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 17.78 0)
 			(effects
 				(font
@@ -6855,7 +6855,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 27.94 0)
 			(effects
 				(font
@@ -6931,7 +6931,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 20.32 90)
 			(effects
 				(font
@@ -7008,7 +7008,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 88.9 0)
 			(effects
 				(font
@@ -7085,7 +7085,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 58.42 0)
 			(effects
 				(font
@@ -7162,7 +7162,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 58.42 0)
 			(effects
 				(font
@@ -7239,7 +7239,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 78.74 0)
 			(effects
 				(font
@@ -7316,7 +7316,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 78.74 0)
 			(effects
 				(font
@@ -7393,7 +7393,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 58.42 0)
 			(effects
 				(font
@@ -7470,7 +7470,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 27.94 0)
 			(effects
 				(font
@@ -7547,7 +7547,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 17.78 0)
 			(effects
 				(font
@@ -7623,7 +7623,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 50.8 90)
 			(effects
 				(font
@@ -7700,7 +7700,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 48.26 0)
 			(effects
 				(font
@@ -7777,7 +7777,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 99.06 0)
 			(effects
 				(font
@@ -7854,7 +7854,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 99.06 0)
 			(effects
 				(font
@@ -7931,7 +7931,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 68.58 0)
 			(effects
 				(font
@@ -8008,7 +8008,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 58.42 0)
 			(effects
 				(font
@@ -8085,7 +8085,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 48.26 0)
 			(effects
 				(font
@@ -8162,7 +8162,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 58.42 0)
 			(effects
 				(font
@@ -8238,7 +8238,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 40.64 90)
 			(effects
 				(font
@@ -8315,7 +8315,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 99.06 0)
 			(effects
 				(font
@@ -8392,7 +8392,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 78.74 0)
 			(effects
 				(font
@@ -8469,7 +8469,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 58.42 0)
 			(effects
 				(font
@@ -8546,7 +8546,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 109.22 0)
 			(effects
 				(font
@@ -8622,7 +8622,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 60.96 90)
 			(effects
 				(font
@@ -8699,7 +8699,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 78.74 0)
 			(effects
 				(font
@@ -8776,7 +8776,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 78.74 0)
 			(effects
 				(font
@@ -8853,7 +8853,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 48.26 0)
 			(effects
 				(font
@@ -8930,7 +8930,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 88.9 0)
 			(effects
 				(font
@@ -9007,7 +9007,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 48.26 0)
 			(effects
 				(font
@@ -9084,7 +9084,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 88.9 0)
 			(effects
 				(font
@@ -9161,7 +9161,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 109.22 0)
 			(effects
 				(font
@@ -9238,7 +9238,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 17.78 0)
 			(effects
 				(font
@@ -9315,7 +9315,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 38.1 0)
 			(effects
 				(font
@@ -9392,7 +9392,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 38.1 0)
 			(effects
 				(font
@@ -9469,7 +9469,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 58.42 0)
 			(effects
 				(font
@@ -9546,7 +9546,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 68.58 0)
 			(effects
 				(font
@@ -9623,7 +9623,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 27.94 0)
 			(effects
 				(font
@@ -9700,7 +9700,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 17.78 0)
 			(effects
 				(font
@@ -9777,7 +9777,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 68.58 0)
 			(effects
 				(font
@@ -9854,7 +9854,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 78.74 0)
 			(effects
 				(font
@@ -9930,7 +9930,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 91.44 90)
 			(effects
 				(font
@@ -10007,7 +10007,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 48.26 0)
 			(effects
 				(font
@@ -10084,7 +10084,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 38.1 0)
 			(effects
 				(font
@@ -10161,7 +10161,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 109.22 0)
 			(effects
 				(font
@@ -10238,7 +10238,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 78.74 0)
 			(effects
 				(font
@@ -10315,7 +10315,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 88.9 0)
 			(effects
 				(font
@@ -10392,7 +10392,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 38.1 0)
 			(effects
 				(font
@@ -10469,7 +10469,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 27.94 0)
 			(effects
 				(font
@@ -10546,7 +10546,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 99.06 0)
 			(effects
 				(font
@@ -10623,7 +10623,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 48.26 0)
 			(effects
 				(font
@@ -10700,7 +10700,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 142.24 68.58 0)
 			(effects
 				(font
@@ -10777,7 +10777,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 68.58 0)
 			(effects
 				(font
@@ -10854,7 +10854,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 99.06 0)
 			(effects
 				(font
@@ -10931,7 +10931,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 27.94 0)
 			(effects
 				(font
@@ -11008,7 +11008,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 38.1 0)
 			(effects
 				(font
@@ -11085,7 +11085,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 78.74 0)
 			(effects
 				(font
@@ -11162,7 +11162,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 58.42 0)
 			(effects
 				(font
@@ -11239,7 +11239,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 99.06 0)
 			(effects
 				(font
@@ -11316,7 +11316,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 50.8 48.26 0)
 			(effects
 				(font
@@ -11393,7 +11393,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 68.58 0)
 			(effects
 				(font
@@ -11470,7 +11470,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 38.1 0)
 			(effects
 				(font
@@ -11547,7 +11547,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 88.9 0)
 			(effects
 				(font
@@ -11624,7 +11624,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 17.78 0)
 			(effects
 				(font
@@ -11701,7 +11701,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 38.1 0)
 			(effects
 				(font
@@ -11778,7 +11778,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 111.76 88.9 0)
 			(effects
 				(font
@@ -11855,7 +11855,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 17.78 0)
 			(effects
 				(font
@@ -11931,7 +11931,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 81.28 90)
 			(effects
 				(font
@@ -12008,7 +12008,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 109.22 0)
 			(effects
 				(font
@@ -12085,7 +12085,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 60.96 88.9 0)
 			(effects
 				(font
@@ -12162,7 +12162,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 27.94 0)
 			(effects
 				(font
@@ -12239,7 +12239,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 132.08 109.22 0)
 			(effects
 				(font
@@ -12316,7 +12316,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 78.74 0)
 			(effects
 				(font
@@ -12393,7 +12393,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 101.6 48.26 0)
 			(effects
 				(font
@@ -12470,7 +12470,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 58.42 0)
 			(effects
 				(font
@@ -12547,7 +12547,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 99.06 0)
 			(effects
 				(font
@@ -12624,7 +12624,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 121.92 17.78 0)
 			(effects
 				(font
@@ -12700,7 +12700,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C4275"
+		(property "MPN" "C4275"
 			(at 22.86 30.48 90)
 			(effects
 				(font
@@ -12777,7 +12777,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 88.9 0)
 			(effects
 				(font
@@ -12854,7 +12854,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -12931,7 +12931,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 71.12 109.22 0)
 			(effects
 				(font
@@ -13008,7 +13008,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2286"
+		(property "MPN" "C2286"
 			(at 81.28 68.58 0)
 			(effects
 				(font

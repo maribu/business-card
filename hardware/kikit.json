@@ -1,0 +1,53 @@
+{
+    "layout": {
+        "type": "grid",
+        "rows": 2,
+        "cols": 1,
+        "hspace": "1.6mm",
+        "vspace": "1.6mm",
+        "rotation": "0deg",
+        "alternation": "none",
+        "renamenet": "Board_{n}-{orig}",
+        "renameref": "{orig}"
+    },
+    "source": {
+        "type": "auto",
+        "tolerance": "1mm"
+    },
+    "tabs": {
+        "type": "annotation",
+        "width": "6mm"
+    },
+    "cuts": {
+        "type": "mousebites",
+        "drill": "0.60mm",
+        "offset": "0.35mm"
+    },
+    "framing": {
+        "type": "railslr",
+        "width": "5mm",
+        "space": "1.6mm"
+    },
+    "tooling": {
+        "type": "4hole",
+        "size": "1.152mm",
+        "hoffset": "2.5mm",
+        "voffset": "5mm"
+    },
+    "fiducials": {
+        "type": "3fid",
+        "opening": "1mm",
+        "hoffset": "3.35mm",
+        "voffset": "10mm"
+    },
+    "text": {
+        "type": "simple",
+        "text": "JLCJLCJLCJLC",
+        "hoffset": "2.5mm",
+        "voffset": "-30mm",
+        "orientation": "90deg",
+        "anchor": "bl",
+        "hjustify": "center",
+        "vjustify": "center"
+    }
+}
