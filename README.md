@@ -6,6 +6,10 @@
 This repository contains an open hardware business card running open source
 software.
 
+A blogged a [detailed write up](https://mari-bu.de/blog/20240910-business-card/)
+of this project. You may also want to check out the corresponding
+[Hackaday.io project](https://hackaday.io/project/197871-marians-business-card).
+
 ## Getting started
 
 ### Hardware
@@ -34,6 +38,9 @@ power the board (ideally via a USB-A extension cord).
 With the programmer connected and the board powered, simply run:
 
     make flash
+
+The "default" application will be `software/RIOT-based-apps/apps/games`, as
+this contains a game launcher that allows running all currently added games.
 
 Refer to the [RIOT documentation](https://doc.riot-os.org/) for more details on
 the software.
